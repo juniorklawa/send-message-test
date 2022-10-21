@@ -1,10 +1,13 @@
-import React from 'react'
+/*eslint-disable */
 import './App.css'
 
 function App() {
   const sendMessage = () => {
+    // @typescript-eslint/ban
+    // @ts-ignore
     if ((window as any).ReactNativeWebView) {
-      (window as any).ReactNativeWebView.postMessage('Hello from React!')
+      // @ts-ignore
+      ;(window as any).ReactNativeWebView.postMessage('Hello from React!')
     }
   }
 
