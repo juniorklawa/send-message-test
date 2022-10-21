@@ -3,17 +3,22 @@ import './App.css'
 
 function App() {
   const sendMessage = () => {
-    // @typescript-eslint/ban
-    // @ts-ignore
+    const obj = {
+      type: 'TEST',
+      data: {
+        name: 'test',
+      },
+    }
+
     if ((window as any).ReactNativeWebView) {
-      // @ts-ignore
-      ;(window as any).ReactNativeWebView.postMessage('Hello from React!')
+      ;(window as any).ReactNativeWebView.postMessage(JSON.stringify(obj))
     }
   }
 
+
   return (
     <div className='App'>
-      <button onClick={sendMessage}>Send Message</button>
+      <button onClick={sendMessage}>sendMessage</button>
     </div>
   )
 }
