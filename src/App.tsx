@@ -1,20 +1,19 @@
 /*eslint-disable */
 import './App.css'
 
+declare global {
+  interface Window { ReactNativeWebView: any; }
+}
+
 function App() {
   const sendMessage = () => {
-    const obj = {
-      type: 'TEST',
-      data: {
-        name: 'test',
-      },
+    const type = 'TEST'
+    const options = {
+      method: 'POST',
     }
 
-    if ((window as any).ReactNativeWebView) {
-      ;(window as any).ReactNativeWebView.postMessage(JSON.stringify(obj))
-    }
+    window.ReactNativeWebView?.postMessage(JSON.stringify({ ...options, type }))
   }
-
 
   return (
     <div className='App'>
